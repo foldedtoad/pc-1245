@@ -14,10 +14,6 @@ Most of the models PC-12XX, PC-13XX and PC-14XX are supported.
 
 The "**-old**" parameter must be specified for some older models of the PC-12XX series (I think PC-124X and PC-125X).
 
-By default there is a little loader program added to the DATA lines.   
-If you don't need it, use the parameter "**-nostub**".  
-The "**-compact**" parameter makes ASCII DATA lines; they need less space but the time for poking them into the memory increases.
-
 ## Building an Executeable
 You need GNU make and a C compiler. Just make the directory containing 'makefile' the current directory and type 'make'.
 
