@@ -9,7 +9,7 @@
 
 .PHONY:	all clean
 
-all: aslink
+all: blddir aslink
 
 clean:
 	rm -f aslink
@@ -18,6 +18,8 @@ clean:
 	rm -f $(SRCMISC)*.o
 	rm -f $(BUILD)aslink	
 
+BLDDIR=     ./build
+
 CC=			gcc
 CCOPT=		-O3
 CCFLAGS=	-Wall -funsigned-char $(CCOPT)
@@ -25,15 +27,14 @@ CCFLAGS=	-Wall -funsigned-char $(CCOPT)
 LD=			gcc
 LDFLAGS=	-Wall
 
-#  Set ASXBASE relative to this make file.
+#  Set ASXBASE relative to this makefile.
 
 ASXBASE:=	.
-ASXBUILD:=	./build
 
 SRCLNK:=	$(ASXBASE)/
 SRCASX:=	$(ASXBASE)/asxxsrc/
 SRCMISC:=	$(ASXBASE)/asxxmisc/
-BUILD:=  	$(ASXBUILD)/
+BUILD:=  	$(BLDDIR)/
 
 .SUFFIXES:	.c .o
 
@@ -47,6 +48,9 @@ ASXX =	asdata.o asexpr.o aslex.o aslist.o	\
 ASXXSRC =	$(addprefix $(SRCASX),$(ASXX))
 
 $(ASXXSRC):	$(SRCMISC)alloc.h asxxxx.h
+
+blddir: 
+	mkdir -p $(BLDDIR)
 
 ####################################################################
 # ASLINK
