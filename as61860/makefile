@@ -7,16 +7,8 @@
 #
 ######################################################################
 
-.PHONY:	all clean prep
-
-all: as61860
-	
-clean:
-	rm -f as61860
-	rm -f *.o
-	rm -f $(SRCASX)*.o
-	rm -f $(SRCMISC)*.o
-	rm -f $(BUILD)/as61860
+ASXBASE:=	./
+BLDDIR:=    ./build
 
 CC=			gcc
 CCOPT=		-O3
@@ -25,46 +17,55 @@ CCFLAGS=	-Wall -funsigned-char $(CCOPT)
 LD=			gcc
 LDFLAGS=	-Wall
 
-# Set ASXBASE relative to this make file.
+# Set ASXBASE relative to this makefile.
 
-ASXBASE:=	./
-ASXBUILD:=	./
+SRCASX:=	$(ASXBASE)asxxsrc
+BUILD:=		$(BLDDIR)
 
-SRCASX:=	$(ASXBASE)asxxsrc/
-SRCMISC:=	$(ASXBASE)asxxmisc/
-BUILD:=		$(ASXBUILD)build/
+.PHONY:	all clean
 
-SRC61860=	$(ASXBASE)
+all: blddir $(BUILD)/as61860
+	
+clean:
+	rm -f *.o
+	rm -f $(SRCASX)/*.o
+	rm -f $(BUILD)as61860
 
 .SUFFIXES:	.c .o
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -I$(SRCMISC) -I$(SRCASX) -c $< -o $@
+	$(CC) $(CCFLAGS) -I$(SRCASX) -c $< -o $@
 
+####################################################################
+
+SRC61860=	$(ASXBASE)
 
 ASXX =	asdata.o asexpr.o aslex.o aslist.o	\
 	asmain.o asmcro.o asout.o assubr.o	\
 	assym.o	asdbg.o
 
-ASXXSRC =	$(addprefix $(SRCASX),$(ASXX))
+ASXXSRC =	$(addprefix $(SRCASX)/,$(ASXX))
 
-$(ASXXSRC):	$(SRCMISC)alloc.h $(SRCASX)asxxxx.h
+$(ASXXSRC):	alloc.h $(SRCASX)/asxxxx.h
 
+####################################################################
+
+blddir: 
+	mkdir -p $(BLDDIR)
 
 ####################################################################
 # AS61860
 ####################################################################
 
-AS61860 =	s6186adr.o s6186mch.o s6186pst.o
+AS61860 = s6186adr.o s6186mch.o s6186pst.o
 
-AS61860SRC =	$(addprefix $(SRC61860),$(AS61860))
+AS61860SRC = $(addprefix $(SRC61860),$(AS61860))
 
-$(AS61860SRC):	$(SRCMISC)alloc.h $(SRCASX)asxxxx.h $(SRC61860)s61860.h
+$(AS61860SRC): $(SRCASX)/asxxxx.h $(ASXBASE)/s61860.h
 
-as61860: $(ASXXSRC) $(AS61860SRC)
-	$(LD) $(LDFLAGS) $(ASXXSRC) $(AS61860SRC) -o as61860
-	cp as61860 $(BUILD)as61860
-	strip $(BUILD)as61860
-	chmod 755 $(BUILD)as61860
+$(BUILD)/as61860: $(ASXXSRC) $(AS61860SRC)
+	$(LD) $(LDFLAGS) $(ASXXSRC) $(AS61860SRC) -o $(BUILD)/as61860
+	strip $(BUILD)/as61860
+	chmod 755 $(BUILD)/as61860
 
 ### end ############################################################
