@@ -7,6 +7,8 @@
 #
 ####################################################################
 
+BLDDIR:=    ./build
+
 IHEXCONV = ihex2wav
 
 ####################################################################
@@ -15,21 +17,21 @@ IHEXCONV = ihex2wav
 
 .PHONY:	all clean
 
-all:	$(IHEXCONV)
+all:	$(BLDDIR) $(IHEXCONV)
 
 clean:
-	rm -fv *.o
-	rm -fv ihex2wav
+	rm -f *.o
+	rm -f $(BLDDIR)/ihex2wav
 
 ####################################################################
 # Option Definitions
 ####################################################################
 
-CC=		gcc
+CC=			gcc
 CCOPT=		-O3
 CCFLAGS=	-Wall -funsigned-char $(CCOPT)
 
-LD=		gcc
+LD=			gcc
 LDFLAGS=	-Wall
 
 
@@ -45,6 +47,11 @@ SRC=		$(RELDIR)/
 DSTEXE=		./
 
 ####################################################################
+
+blddir: 
+	mkdir -p $(BLDDIR)
+
+####################################################################
 # IHXCONV FILES
 ####################################################################
 
@@ -57,8 +64,8 @@ ihexconv.o : $(SRC)ihexconv.c $(SRCASX)ihexconv.h
 		$(CC) $(CCFLAGS) -c $< -o $(@F)
 
 ihex2wav :	$(IHEX2WAV)
-		$(LD) $(LDFLAGS) -o $(DSTEXE)ihex2wav $(IHEX2WAV)
-		strip $(DSTEXE)ihex2wav
+		$(LD) $(LDFLAGS) -o $(BLDDIR)/ihex2wav $(IHEX2WAV)
+		strip $(BLDDIR)/ihex2wav
 
 
 ### end #########################################################
