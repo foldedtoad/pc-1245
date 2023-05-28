@@ -34,18 +34,6 @@ CCFLAGS=	-Wall -funsigned-char $(CCOPT)
 LD=			gcc
 LDFLAGS=	-Wall
 
-
-####################################################################
-# IHEXCONV Directories
-####################################################################
-
-#  Set RELDIR relative to this make file.
-
-RELDIR=		.
-
-SRC=		$(RELDIR)/
-DSTEXE=		./
-
 ####################################################################
 
 blddir: 
