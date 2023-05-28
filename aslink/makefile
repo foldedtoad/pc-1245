@@ -7,17 +7,6 @@
 #
 ######################################################################
 
-.PHONY:	all clean
-
-all: blddir aslink
-
-clean:
-	rm -f aslink
-	rm -f *.o
-	rm -f $(SRCASX)*.o
-	rm -f $(SRCMISC)*.o
-	rm -f $(BUILD)aslink	
-
 BLDDIR=     ./build
 
 CC=			gcc
@@ -33,13 +22,21 @@ ASXBASE:=	.
 
 SRCLNK:=	$(ASXBASE)/
 SRCASX:=	$(ASXBASE)/asxxsrc/
-SRCMISC:=	$(ASXBASE)/asxxmisc/
 BUILD:=  	$(BLDDIR)/
+
+.PHONY:	all clean
+
+all: blddir $(BUILD)aslink
+
+clean:
+	rm -f *.o
+	rm -f $(SRCASX)*.o
+	rm -f $(BUILD)aslink	
 
 .SUFFIXES:	.c .o
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -I$(SRCMISC) -I$(SRCASX) -c $< -o $@
+	$(CC) $(CCFLAGS) -I$(SRCLNK) -I$(SRCASX) -c $< -o $@
 
 ASXX =	asdata.o asexpr.o aslex.o aslist.o	\
 	asmain.o asmcro.o asout.o assubr.o	\
@@ -47,7 +44,7 @@ ASXX =	asdata.o asexpr.o aslex.o aslist.o	\
 
 ASXXSRC =	$(addprefix $(SRCASX),$(ASXX))
 
-$(ASXXSRC):	$(SRCMISC)alloc.h asxxxx.h
+$(ASXXSRC):	$(SRCLNK)alloc.h asxxxx.h
 
 blddir: 
 	mkdir -p $(BLDDIR)
@@ -63,11 +60,10 @@ ASLINK = lkmain.o lkhead.o lkarea.o lkbank.o	\
 
 ASLINKSRC =	$(addprefix $(SRCLNK),$(ASLINK))
 
-$(ASLINK):	$(SRCMISC)alloc.h $(SRCLNK)aslink.h
+$(ASLINK):	$(SRCLNK)alloc.h $(SRCLNK)aslink.h
 
-aslink: $(ASLINKSRC)
-	$(LD) $(LDFLAGS) $(ASLINKSRC) -o aslink
-	cp aslink $(BUILD)aslink
+$(BUILD)aslink: $(ASLINKSRC)
+	$(LD) $(LDFLAGS) $(ASLINKSRC) -o $(BUILD)aslink
 	strip $(BUILD)aslink
 	chmod 755 $(BUILD)aslink
 
