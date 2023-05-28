@@ -7,7 +7,8 @@
 #
 ######################################################################
 
-BLDDIR=     ./build
+ASXBASE:=	.
+BLDDIR:=    ./build
 
 CC=			gcc
 CCOPT=		-O3
@@ -17,8 +18,6 @@ LD=			gcc
 LDFLAGS=	-Wall
 
 #  Set ASXBASE relative to this makefile.
-
-ASXBASE:=	.
 
 SRCLNK:=	$(ASXBASE)/
 BUILD:=  	$(BLDDIR)/
@@ -35,6 +34,8 @@ clean:
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -I$(SRCLNK) -c $< -o $@
+
+####################################################################
 
 blddir: 
 	mkdir -p $(BLDDIR)
