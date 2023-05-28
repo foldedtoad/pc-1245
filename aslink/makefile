@@ -21,7 +21,6 @@ LDFLAGS=	-Wall
 ASXBASE:=	.
 
 SRCLNK:=	$(ASXBASE)/
-SRCASX:=	$(ASXBASE)/asxxsrc/
 BUILD:=  	$(BLDDIR)/
 
 .PHONY:	all clean
@@ -30,21 +29,12 @@ all: blddir $(BUILD)aslink
 
 clean:
 	rm -f *.o
-	rm -f $(SRCASX)*.o
 	rm -f $(BUILD)aslink	
 
 .SUFFIXES:	.c .o
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -I$(SRCLNK) -I$(SRCASX) -c $< -o $@
-
-ASXX =	asdata.o asexpr.o aslex.o aslist.o	\
-	asmain.o asmcro.o asout.o assubr.o	\
-	assym.o	asdbg.o
-
-ASXXSRC =	$(addprefix $(SRCASX),$(ASXX))
-
-$(ASXXSRC):	$(SRCLNK)alloc.h asxxxx.h
+	$(CC) $(CCFLAGS) -I$(SRCLNK) -c $< -o $@
 
 blddir: 
 	mkdir -p $(BLDDIR)
@@ -68,5 +58,3 @@ $(BUILD)aslink: $(ASLINKSRC)
 	chmod 755 $(BUILD)aslink
 
 ### end ############################################################
-
-
