@@ -105,10 +105,7 @@
  *		terminate if a 'q' error occurs.
  */
 
-VOID
-expr(esp, n)
-struct expr *esp;
-int n;
+VOID expr(struct expr * esp, int n)
 {
 	a_uint ae, ar;	
 	int c, p;
@@ -256,8 +253,7 @@ int n;
  *		a 'r' error is reported.
  */
 
-a_uint
-absexpr()
+a_uint absexpr(void)
 {
 	struct expr e;
 
@@ -319,9 +315,7 @@ absexpr()
  *		by a 'q' error.
  */
 
-VOID
-term(esp)
-struct expr *esp;
+VOID term(struct expr * esp)
 {
 	int c;
 	char *jp;
@@ -557,9 +551,7 @@ struct expr *esp;
  *		none
  */
 
-int
-digit(c, r)
-int c, r;
+int digit(int c, int r)
 {
 	if (r == 16) {
 		if (ctype[c] & RAD16) {
@@ -615,9 +607,7 @@ int c, r;
  *		'r' error invoked.
  */
 
-VOID
-abscheck(esp)
-struct expr *esp;
+VOID abscheck(struct expr * esp)
 {
 	if (esp->e_flag || esp->e_base.e_ap) {
 		esp->e_flag = 0;
@@ -651,9 +641,7 @@ struct expr *esp;
  *		none
  */
 
-int
-is_abs (esp)
-struct expr *esp;
+int is_abs (struct expr * esp)
 {
 	if (esp->e_flag || esp->e_base.e_ap) {
 		return(0);
@@ -681,9 +669,7 @@ struct expr *esp;
  *		none
  */
  
-int
-oprio(c)
-int c;
+int oprio(int c)
 {
 	if (c == '*' || c == '/' || c == '%')
 		return (10);
@@ -719,9 +705,7 @@ int c;
  *		expression structure cleared.
  */
  
-VOID
-clrexpr(esp)
-struct expr *esp;
+VOID clrexpr(struct expr * esp)
 {
 	esp->e_mode = 0;
 	esp->e_flag = 0;
@@ -763,9 +747,7 @@ struct expr *esp;
  *		at the instrinsic sizeof(int) size. 
  */
 
-a_uint
-rngchk(n)
-a_uint n;
+a_uint rngchk(a_uint n)
 {
 	if (vflag) {
 		if ((n & ~a_mask) && ((n & ~a_mask) != ~a_mask)) {
@@ -798,9 +780,7 @@ a_uint n;
  *		The arithmetic precision parameters are set.
  */
  
-VOID
-exprmasks(n)
-int n;
+VOID exprmasks(int n)
 {
 	a_bytes = n;
 
@@ -850,5 +830,3 @@ int n;
 	}
 #endif
 }
-
-

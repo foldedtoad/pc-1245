@@ -82,8 +82,7 @@
  */
 
 #if SDCDB
-VOID
-DefineSDCC_Line()
+VOID DefineSDCC_Line(void)
 {
 	char name[ NCPS ];
         struct sym *pSym;
@@ -129,8 +128,7 @@ DefineSDCC_Line()
  */
 
 #if NOICE
-VOID
-DefineNoICE_Line()
+VOID DefineNoICE_Line(void)
 {
 	char name[ NCPS ];
         struct sym *pSym;
@@ -181,9 +179,7 @@ DefineNoICE_Line()
 static	struct	asmf *	prevFile = NULL;
 static	char	baseName[FILSPC];
 
-char*
-BaseFileName(currFile)
-struct	asmf * currFile;
+char* BaseFileName(struct asmf * currFile)
 {
         char *p1, *p2;
 

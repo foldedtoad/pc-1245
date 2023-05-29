@@ -92,8 +92,7 @@
  *			file ___pst.c.
  */
 
-VOID
-syminit()
+VOID syminit(void)
 {
 	struct mne  *mp;
 	struct mne **mpp;
@@ -149,9 +148,7 @@ syminit()
  *		none
  */
 
-struct area *
-alookup(id)
-char *id;
+struct area * alookup(char * id)
 {
 	struct area *ap;
 
@@ -188,9 +185,7 @@ char *id;
  *		none
  */
 
-struct bank *
-blookup(id)
-char *id;
+struct bank * blookup(char * id)
 {
 	struct bank *bp;
 
@@ -227,9 +222,7 @@ char *id;
  *		none
  */
 
-struct def *
-dlookup(id)
-char *id;
+struct def * dlookup(char * id)
 {
 	struct def *dp;
 
@@ -266,9 +259,7 @@ char *id;
  *		none
  */
 
-struct mne *
-mlookup(id)
-char *id;
+struct mne * mlookup(char * id)
 {
 	struct mne *mp;
 	int h;
@@ -311,9 +302,7 @@ char *id;
  *		none
  */
 
-struct sym *
-slookup(id)
-char *id;
+struct sym * slookup(char * id)
 {
 	struct sym *sp;
 	int h;
@@ -358,9 +347,7 @@ char *id;
  *		for the new sym structure the assembly terminates.
  */
 
-struct sym *
-lookup(id)
-char *id;
+struct sym * lookup(char * id)
 {
 	struct sym *sp;
 	int h;
@@ -407,8 +394,7 @@ char *id;
  *		Symbol types changed.
  */
 
-VOID
-symglob()
+VOID symglob(void)
 {
 	struct sym *sp;
 	int i;
@@ -445,8 +431,7 @@ symglob()
  *		Symbol types changed.
  */
 
-VOID
-allglob()
+VOID allglob(void)
 {
 	struct sym *sp;
 	int i;
@@ -488,10 +473,7 @@ allglob()
  *
  */
 
-int
-symeq(p1, p2, flag)
-char *p1, *p2;
-int flag;
+int symeq(char * p1, char * p2, int flag)
 {
 	int n;
 	n = strlen(p1) + 1;
@@ -540,10 +522,7 @@ int flag;
  *		none
  */
  
-int
-hash(p, flag)
-char *p;
-int flag;
+int hash(char * p, int flag)
 {
 	int h;
 
@@ -607,9 +586,7 @@ int flag;
 static	char *	pnext = NULL;
 static	int	bytes = 0;
    
-char *
-strsto(str)
-char *str;
+char * strsto(char * str)
 {
 	int  len;
 	char *p;
@@ -669,9 +646,7 @@ char *str;
  *		enable memory deallocation by asfree().
  */
 
-char *
-new(n)
-unsigned int n;
+char * new(unsigned int n)
 {
 	struct memlnk *lnk;
 	VOID *p;
@@ -709,8 +684,7 @@ unsigned int n;
  *		Memory is freed.
  */
 
-VOID
-asfree()
+VOID asfree(void)
 {
 	VOID *p;
 

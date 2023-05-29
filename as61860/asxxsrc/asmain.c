@@ -184,10 +184,7 @@
  *		REL, LST, HLR, and/or SYM files may be generated.
  */
 
-int
-main(argc, argv)
-int argc;
-char *argv[];
+int main(int argc, char * argv[])
 {
 	char *p, *q;
 	int c, i;
@@ -562,8 +559,7 @@ char *argv[];
  *		none
  */
 
-int
-intsiz()
+int intsiz(void)
 {
 	return(sizeof(INT32));
 }
@@ -593,10 +589,7 @@ intsiz()
  *		created which will be appended to any previously
  *		created T_INSERT assembly file structures.
  */
-VOID
-insline(str,i)
-char *str;
-int i;
+VOID insline(char * str, int i)
 {
 	if (asmo == NULL) {
 		asmo = (struct asmf *)
@@ -645,9 +638,7 @@ int i;
  *		All files closed. Program terminates.
  */
 
-VOID
-asexit(i)
-int i;
+VOID asexit(int i)
 {
 	if (lfp != NULL) fclose(lfp);
 	if (hfp != NULL) fclose(hfp);
@@ -797,8 +788,7 @@ int i;
  *		VOID	unget()		aslex.c
  */
 
-VOID
-asmbl()
+VOID asmbl(void)
 {
 	struct mne *mp, *xp;
 	struct mcrdef *np;
@@ -2316,9 +2306,7 @@ loop:
  *		and saved in the current area structure.
  */
 
-VOID
-boundary(n)
-a_uint n;
+VOID boundary(a_uint n)
 {
 	struct area *ap;
 	struct bndry *bn, *ibn, *jbn, *kbn;
@@ -2444,11 +2432,7 @@ a_uint n;
  *		Symbol parameters are updated.
  */
 
-VOID
-equate(id,e1,equtype)
-char *id;
-struct expr *e1;
-a_uint equtype;
+VOID equate(char * id, struct expr * e1, a_uint equtype)
 {
 	struct sym *sp;
 
@@ -2530,11 +2514,7 @@ a_uint equtype;
  *		File is opened for read or write.
  */
 
-FILE *
-afile(fn, ft, wf)
-char *fn;
-char *ft;
-int wf;
+FILE * afile(char * fn, char * ft, int wf)
 {
 	FILE *fp;
 	char *frmt;
@@ -2607,10 +2587,7 @@ int wf;
  *		File specification string may be modified.
  */
 
-VOID
-afilex(fn, ft)
-char *fn;
-char *ft;
+VOID afilex(char * fn, char * ft)
 {
 	char *p1, *p2;
 	int c;
@@ -2678,9 +2655,7 @@ char *ft;
  *		none
  */
 
-int
-fndidx(str)
-char *str;
+int fndidx(char * str)
 {
 	char *p1, *p2;
 
@@ -2720,9 +2695,7 @@ char *str;
  *		Current area saved, new area loaded, buffers flushed.
  */
 
-VOID
-newdot(nap)
-struct area *nap;
+VOID newdot(struct area * nap)
 {
 	struct area *oap;
 
@@ -2759,10 +2732,7 @@ struct area *nap;
  *		has changed.
  */
 
-VOID
-phase(ap, a)
-struct area *ap;
-a_uint a;
+VOID phase(struct area * ap, a_uint a)
 {
 	if (ap != dot.s_area || a != dot.s_addr)
 		err('p');
@@ -2835,8 +2805,7 @@ char *usetxt[] = {
  *		none
  */
 
-VOID
-usage()
+VOID usage(void)
 {
 	char   **dp;
 

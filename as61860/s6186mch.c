@@ -67,9 +67,7 @@ static char  s61860[256] = {
 /*
  * Process machine ops.
  */
-VOID
-machine(mp)
-struct mne *mp;
+VOID machine(struct mne * mp)
 {
 	unsigned int op;
 	struct expr e1, e2;
@@ -276,9 +274,7 @@ struct mne *mp;
 /*
  * Covert ascii characters to SBASIC characters
  */
-int
-ascii2sbasic(c)
-int c;
+int ascii2sbasic(int c)
 {
 	if (((c >= '0') && (c <= '9')) ||
 	    ((c >= 'A') && (c <= 'Z'))) {
@@ -329,9 +325,7 @@ int c;
 /*
  * Branch/Jump PCR Mode Check
  */
-int
-mchpcr(esp)
-struct expr *esp;
+int mchpcr(struct expr * esp)
 {
 	if (esp->e_base.e_ap == dot.s_area) {
 		return(1);
@@ -354,8 +348,7 @@ struct expr *esp;
 /*
  * Machine specific init.
  */
-VOID
-minit()
+VOID minit(void)
 {
 	/*
 	 * Byte Order

@@ -113,9 +113,7 @@
  *		Macro directives processed and
  *		macro structures created.
  */
-int
-mcrprc(code)
-int code;
+int mcrprc(int code)
 {
 	struct mcrdef *np,*nq;
 	struct macrofp *nfp;
@@ -477,9 +475,7 @@ int code;
  *		terminate the assembler.
  */
 
-VOID
-getdarg(np)
-struct mcrdef * np;
+VOID getdarg(struct mcrdef * np)
 {
 	struct strlst *str;
 	char id[NCPS];
@@ -555,9 +551,7 @@ struct mcrdef * np;
  *		terminate the assembler.
  */
 
-VOID
-getxarg(np)
-struct mcrdef * np;
+VOID getxarg(struct mcrdef * np)
 {
 	struct strlst *str;
 	char id[NCPS];
@@ -634,9 +628,7 @@ struct mcrdef * np;
  *		Macro expansion argument is returned in id[].
  */
 
-VOID
-getxstr(id)
-char *id;
+VOID getxstr(char * id)
 {
 	char *p;
 	int c, dc;
@@ -722,9 +714,7 @@ char *id;
  *		Macro is inserted into assembler stream
  */
 
-VOID
-macro(np)
-struct mcrdef * np;
+VOID macro(struct mcrdef * np)
 {
 	struct macrofp *nfp;
 	struct strlst *str;
@@ -846,10 +836,7 @@ struct mcrdef * np;
  *		and initialized.
  */
 
-struct mcrdef *
-newdef(code, id)
-int code;
-char *id;
+struct mcrdef * newdef(int code, char * id)
 {
 	struct mne *mp;
 
@@ -910,9 +897,7 @@ char *id;
  *		none
  */
 
-struct mcrdef *
-nlookup(id)
-char *id;
+struct mcrdef * nlookup(char * id)
 {
 	struct mcrdef *	np;
 
@@ -973,11 +958,7 @@ char *id;
  *		is updated.
  */
 
-char *
-fgetm(ptr, len, fp)
-char *ptr;
-int len;
-FILE *fp;
+char * fgetm(char * ptr, int len, FILE * fp)
 {
 	struct macrofp *nfp;
 	struct mcrdef *np;
@@ -1076,9 +1057,7 @@ FILE *fp;
  *		and a substitution made for the string id[].
  */
 
-VOID
-macroscn(nfp)
-struct	macrofp *nfp;
+VOID macroscn(struct macrofp * nfp)
 {
 	int c;
 	char id[NINPUT];
@@ -1138,10 +1117,7 @@ struct	macrofp *nfp;
  *		a 1, else 0.
  */
 
-int
-macrosub(id, nfp)
-char *id;
-struct	macrofp *nfp;
+int macrosub(char * id, struct	macrofp * nfp)
 {
 	char *p;
 	char xrgstr[NINPUT*2];
@@ -1284,8 +1260,7 @@ struct	macrofp *nfp;
 static	char *	pnext;
 static	int	bytes;
 
-VOID *
-mhunk()
+VOID * mhunk(void)
 {
 	struct memlnk *lnk;
 
@@ -1359,9 +1334,7 @@ mhunk()
  *		to space.  Out of Space terminates assembler.
  */
  
-char *
-mstring(str)
-char *str;
+char * mstring(char * str)
 {
 	int  len;
 	char *p;
@@ -1414,9 +1387,7 @@ char *str;
  *		Out of Space terminates assembler.
  */
  
-char *
-mstruct(n)
-int n;
+char * mstruct(int n)
 {
 	int  bofst;
 	char *p;
@@ -1465,8 +1436,7 @@ int n;
  *		Prepares values for next assembler pass.
  */
  
-VOID
-mcrinit()
+VOID mcrinit(void)
 {
 	mls.s_addr = 10000;
 

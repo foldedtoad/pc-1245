@@ -94,10 +94,7 @@
  *		assembler-source text line.
  */
 
-VOID
-getid(id, c)
-int c;
-char *id;
+VOID getid(char * id, int c)
 {
 	char *p;
 
@@ -158,10 +155,7 @@ char *id;
  *		assembler-source text line.
  */
 
-VOID
-getst(id, c)
-int c;
-char *id;
+VOID getst(char * id, int c)
 {
 	char *p;
 
@@ -208,10 +202,7 @@ char *id;
  *		is found or the input line terminates unexpectedly.
  */
 
-VOID
-getdstr(str, slen)
-char * str;
-int slen;
+VOID getdstr(char * str, int slen)
 {
 	char *p;
 	int c, d;
@@ -258,8 +249,7 @@ int slen;
  *		comment returns causes a 'q' error.
  */
 
-int
-getdlm()
+int getdlm(void)
 {
 	int c;
 
@@ -296,8 +286,7 @@ getdlm()
  *		in the current assembler-source text line
  */
 
-int
-getnb()
+int getnb(void)
 {
 	int c;
 
@@ -329,8 +318,7 @@ getnb()
  *		line, ip is not updated.
  */
 
-int
-get()
+int get(void)
 {
 	int c;
 
@@ -367,9 +355,7 @@ get()
  *		ip decremented by 1 character position
  */
 
-VOID
-unget(c)
-int c;
+VOID unget(int c)
 {
 	if (c)
 		if (ip != ib)
@@ -406,9 +392,7 @@ int c;
  *		in the current assembler-source text line
  */
 
-int
-getmap(d)
-int d;
+int getmap(int d)
 {
 	int c, n, v;
 
@@ -495,9 +479,7 @@ int d;
  *		assembler-source text line pointer updated
  */
 
-int
-comma(flag)
-int flag;
+int comma(int flag)
 {
 	int c;
 
@@ -586,7 +568,7 @@ int flag;
  *	asmf structures and then process the files in sequence.
  *
  *	             -------------       -------------               -------------
- *                  | File 1      |     | File 2      |             | File N      |
+ *              | File 1      |     | File 2      |             | File N      |
  *	 ------     |       ------|     |       ------|             |       ------|      
  *	| asmp | -->|      | next | --> |      | next | --> ... --> |      | NULL |
  *	 ------      -------------       -------------               -------------
@@ -598,7 +580,7 @@ int flag;
  *	This is shown in the following:
  *
  *	             ------------- 
- *                  | Incl File 1 |
+ *              | Incl File 1 |
  *	            |       ------|
  *	            |      | next |
  *	             ------------- 
@@ -606,7 +588,7 @@ int flag;
  *	asmf structures:       |
  *	                       V
  *	             -------------       -------------               -------------
- *                  | File 1      |     | File 2      |             | File N      |
+ *              | File 1      |     | File 2      |             | File N      |
  *	 ------     |       ------|     |       ------|             |       ------|      
  *	| asmp | -->|      | next | --> |      | next | --> ... --> |      | NULL |
  *	 ------      -------------       -------------               -------------
@@ -621,7 +603,7 @@ int flag;
  *	This is shown in the following:
  *
  *	             -------------       -------------
- *                  | Incl File 1 |     |    Macro    |
+ *              | Incl File 1 |     |    Macro    |
  *	            |       ------|     |       ------|
  *	            |      | next |     |      | next |
  *	             -------------       -------------
@@ -629,7 +611,7 @@ int flag;
  *	asmf structures:       |                   |
  *	                       V                   V
  *	             -------------       -------------               -------------
- *                  | File 1      |     | File 2      |             | File N      |
+ *              | File 1      |     | File 2      |             | File N      |
  *	 ------     |       ------|     |       ------|             |       ------|      
  *	| asmp | -->|      | next | --> |      | next | --> ... --> |      | NULL |
  *	 ------      -------------       -------------               -------------
@@ -648,12 +630,11 @@ int flag;
  *
  */
 
-int
-nxtline()
+int nxtline(void)
 {
 	struct asmf *asmt;
 
-loop:	if (asmc == NULL) return(0);
+loop: if (asmc == NULL) return(0);
 
 	/*
 	 * Insert Include File
@@ -828,8 +809,7 @@ loop:	if (asmc == NULL) return(0);
  *		and a substitution made for the string id[].
  */
 
-VOID
-scanline()
+VOID scanline(void)
 {
 	int c;
 	char id[NINPUT];
@@ -938,9 +918,7 @@ scanline()
  *		and a substitution made for the string id[].
  */
 
-int
-replace(id)
-char *id;
+int replace(char * id)
 {
 	char *p;
 	char str[NINPUT*2];
@@ -1032,8 +1010,7 @@ char *id;
  *		Sets line to the source file line number.
  */
 
-int
-getlnm()
+int getlnm(void)
 {
 	struct asmf *asmt;
 
@@ -1075,8 +1052,7 @@ getlnm()
  *		the position in the current assembler-source text line
  */
 
-int
-more()
+int more(void)
 {
 	int c;
 
@@ -1107,8 +1083,7 @@ more()
  *		position in the current assembler-source text line
  */
 
-char
-endline()
+char endline(void)
 {
 	int c;
 
@@ -1137,9 +1112,7 @@ endline()
  *		All CR and LF characters removed.
  */
 
-VOID
-chopcrlf(str)
-char *str;
+VOID chopcrlf(char * str)
 {
 	char *p;
 	char c;

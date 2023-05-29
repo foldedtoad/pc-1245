@@ -295,30 +295,22 @@
  *		Absolute data is processed.
  */
 
-VOID
-outab(v)
-a_uint v;
+VOID outab(a_uint v)
 {
 	outaxb(1, v);
 }
 
-VOID
-outaw(v)
-a_uint v;
+VOID outaw(a_uint v)
 {
 	outaxb(2, v);
 }
 
-VOID
-outa3b(v)
-a_uint v;
+VOID outa3b(a_uint v)
 {
 	outaxb(3, v);
 }
 
-VOID
-outa4b(v)
-a_uint v;
+VOID outa4b(a_uint v)
 {
 	outaxb(4, v);
 }
@@ -348,10 +340,7 @@ a_uint v;
  *		The current assembly address is incremented by i.
  */
 
-VOID
-outaxb(i, v)
-int i;
-a_uint v;
+VOID outaxb(int i, a_uint v)
 {
 	int p_bytes;
 
@@ -398,10 +387,7 @@ a_uint v;
  *		i bytes are placed into the T Line Buffer.
  */
 
-VOID
-outatxb(i, v)
-int i;
-a_uint v;
+VOID outatxb(int i, a_uint v)
 {
 	if ((int) hilo) {
 		if (i >= 4) *txtp++ = frthbyte(v);
@@ -439,34 +425,22 @@ a_uint v;
  *	        relocatable data processed
  */
 
-VOID
-outrb(esp, r)
-struct expr *esp;
-int r;
+VOID outrb(struct expr * esp, int r)
 {
 	outrxb(1, esp, r);
 }
 
-VOID
-outrw(esp, r)
-struct expr *esp;
-int r;
+VOID outrw(struct expr * esp, int r)
 {
 	outrxb(2, esp, r);
 }
 
-VOID
-outr3b(esp, r)
-struct expr *esp;
-int r;
+VOID outr3b(struct expr * esp, int r)
 {
 	outrxb(3, esp, r);
 }
 
-VOID
-outr4b(esp, r)
-struct expr *esp;
-int r;
+VOID outr4b(struct expr * esp, int r)
 {
 	outrxb(4, esp, r);
 }
@@ -514,11 +488,7 @@ int r;
  *		The current assembly address is incremented by i.
  */
 
-VOID
-outrxb(i, esp, r)
-int i;
-struct expr *esp;
-int r;
+VOID outrxb(int i, struct expr *esp, int r)
 {
 	a_uint m, n;
 	int p_bytes;
@@ -673,38 +643,22 @@ int r;
  *	        relocatable data processed
  */
 
-VOID
-outrbm(esp, r, v)
-struct expr *esp;
-int r;
-a_uint v;
+VOID outrbm(struct expr * esp, int r, a_uint v)
 {
 	outrxbm(1, esp, r, v);
 }
 
-VOID
-outrwm(esp, r, v)
-struct expr *esp;
-int r;
-a_uint v;
+VOID outrwm(struct expr * esp, int r, a_uint v)
 {
 	outrxbm(2, esp, r, v);
 }
 
-VOID
-outr3bm(esp, r, v)
-struct expr *esp;
-int r;
-a_uint v;
+VOID outr3bm(struct expr * esp, int r, a_uint v)
 {
 	outrxbm(3, esp, r, v);
 }
 
-VOID
-outr4bm(esp, r, v)
-struct expr *esp;
-int r;
-a_uint v;
+VOID outr4bm(struct expr * esp, int r, a_uint v)
 {
 	outrxbm(4, esp, r, v);
 }
@@ -763,12 +717,7 @@ a_uint v;
  *		The current assembly address is incremented by i.
  */
 
-VOID
-outrxbm(i, esp, r, v)
-int i;
-struct expr *esp;
-int r;
-a_uint v;
+VOID outrxbm(int i, struct expr * esp, int r, a_uint v)
 {
 	a_uint esprv, m;
 	int n, p_bytes;
@@ -915,10 +864,7 @@ a_uint v;
  *	side effects:
  *		none
  */
-a_uint outmerge(esp, r, base)
-a_uint esp;
-int r;
-a_uint base;
+a_uint outmerge(a_uint esp, int r, a_uint base)
 {
 	struct mode *mp;
 	char *p;
@@ -978,11 +924,7 @@ a_uint base;
  *		Paging information dumped to .REL file.
  */
 
-VOID
-outdp(carea, esp, r)
-struct area *carea;
-struct expr *esp;
-int r;
+VOID outdp(struct area * carea, struct expr * esp, int r)
 {
 	a_uint n;
 
@@ -1034,8 +976,7 @@ int r;
  *		assembled data and relocation buffers will be cleared.
  */
 
-VOID
-outall()
+VOID outall(void)
 {
 	if (oflag && pass==2)
 		outbuf("R");
@@ -1066,8 +1007,7 @@ outall()
  *		assembled data and relocation buffers will be cleared.
  */
 
-VOID
-outdot()
+VOID outdot(void)
 {
 	if (oflag && pass==2) {
 		fprintf(ofp, "T");
@@ -1111,10 +1051,7 @@ outdot()
  *		Data and relocation buffers may be emptied and initialized.
  */
 
-VOID
-outchk(nt, nr)
-int nt;
-int nr;
+VOID outchk(int nt, int nr)
 {
 	struct area *ap;
 
@@ -1158,9 +1095,7 @@ int nr;
  *		buffer pointers and counters initialized.
  */
 
-VOID
-outbuf(s)
-char *s;
+VOID outbuf(char * s)
 {
 	if (txtp > &txt[a_bytes]) {
 		fprintf(ofp, "T");
@@ -1224,8 +1159,7 @@ char *s;
  *		and area information is output to the .REL file.
  */
 
-VOID
-outgsd()
+VOID outgsd(void)
 {
 	struct area *ap;
 	struct bank *bp;
@@ -1370,10 +1304,7 @@ outgsd()
  *		The G line is sent to the .REL file.
  */
 
-VOID
-outmode(index, mp)
-int index;
-struct mode *mp;
+VOID outmode(int index, struct mode * mp)
 {
 	char *p;
 	int i, lines;
@@ -1418,9 +1349,7 @@ struct mode *mp;
  *		The B line is sent to the .REL file.
  */
 
-VOID
-outbank(bp)
-struct bank *bp;
+VOID outbank(struct bank * bp)
 {
 	char * frmt;
 
@@ -1478,9 +1407,7 @@ struct bank *bp;
  *		then default attributes are specified.
  */
 
-VOID
-outarea(ap)
-struct area *ap;
+VOID outarea(struct area * ap)
 {
 	int a_flag;
 	struct bank *bp;
@@ -1575,9 +1502,7 @@ struct area *ap;
  *		The S line is sent to the .REL file.
  */
 
-VOID
-outsym(sp)
-struct sym *sp;
+VOID outsym(struct sym * sp)
 {
 	char *frmt;
 	a_uint s_addr;
@@ -1678,10 +1603,7 @@ struct sym *sp;
  *		Data is sent to the .REL file.
  */
 
-VOID
-out(p, n)
-char *p;
-int n;
+VOID out(char * p, int n)
 {
 	while (n--) {
 		if (xflag == 0) {
@@ -1719,10 +1641,7 @@ int n;
  *		Pointers to data and relocation buffers incremented by 1.
  */
 
-VOID
-out_lb(v, t)
-a_uint v;
-int t;
+VOID out_lb(a_uint v, int t)
 {
 	if (cp < &cb[NCODE]) {
 		*cp++ = (char) v;
@@ -1752,26 +1671,17 @@ int t;
  *		Listing data processed.
  */
 
-VOID
-out_lw(v, t)
-a_uint v;
-int t;
+VOID out_lw(a_uint v, int t)
 {
 	out_lxb(2, v, t);
 }
 
-VOID
-out_l3b(v, t)
-a_uint v;
-int t;
+VOID out_l3b(a_uint v, int t)
 {
 	out_lxb(3, v, t);
 }
 
-VOID
-out_l4b(v, t)
-a_uint v;
-int t;
+VOID out_l4b(a_uint v, int t)
 {
 	out_lxb(4, v, t);
 }
@@ -1797,11 +1707,7 @@ int t;
  *		i list bytes are processed.
  */
 
-VOID
-out_lxb(i, v, t)
-int i;
-a_uint v;
-int t;
+VOID out_lxb(int i, a_uint v, int t)
 {
 	if ((int) hilo) {
 		if (i >= 4) out_lb(frthbyte(v),t&R_RELOC ? t|R_BYT4 : 0);
@@ -1837,9 +1743,7 @@ int t;
  *		Pointer to relocation buffer incremented by 2.
  */
 
-VOID
-out_rw(v)
-a_uint v;
+VOID out_rw(a_uint v)
 {
 	if ((int) hilo) {
 		*relp++ = hibyte(v);
@@ -1874,10 +1778,7 @@ a_uint v;
  *		T Line buffer updated.
  */
 
-VOID
-out_txb(i, v)
-int i;
-a_uint v;
+VOID out_txb(int i, a_uint v)
 {
 	if ((int) hilo) {
 		if (i >= 4) *txtp++ = frthbyte(v);
@@ -1915,30 +1816,22 @@ a_uint v;
  *		none
  */
 
-int
-lobyte(v)
-a_uint v;
+int lobyte(a_uint v)
 {
 	return ((int) (v&0377));
 }
 
-int
-hibyte(v)
-a_uint v;
+int hibyte(a_uint v)
 {
 	return ((int) ((v>>8)&0377));
 }
 
-int
-thrdbyte(v)
-a_uint v;
+int thrdbyte(a_uint v)
 {
 	return ((int) ((v>>16)&0377));
 }
 
-int
-frthbyte(v)
-a_uint v;
+int frthbyte(a_uint v)
 {
 	return ((int) ((v>>24)&0377));
 }

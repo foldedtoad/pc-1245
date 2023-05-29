@@ -64,9 +64,7 @@
  *		error code array eb[] or the parse terminated.
  */
 
-VOID
-err(c)
-int c;
+VOID err(int c)
 {
 	char *p;
 
@@ -107,8 +105,7 @@ int c;
  *		none
  */
 
-VOID
-diag()
+VOID diag(void)
 {
 	char *p,*errstr;
 
@@ -155,8 +152,7 @@ diag()
 /*
  * Note an 'r' error.
  */
-VOID
-rerr()
+VOID rerr(void)
 {
 	err('r');
 }
@@ -164,8 +160,7 @@ rerr()
 /*
  * Note an 'a' error.
  */
-VOID
-aerr()
+VOID aerr(void)
 {
 	err('a');
 }
@@ -173,8 +168,7 @@ aerr()
 /*
  * Note a 'q' error.
  */
-VOID
-qerr()
+VOID qerr(void)
 {
 	err('q');
 }
@@ -224,9 +218,7 @@ char *errors[] = {
  *		A pointer to the appropriate
  *		error code string is returned.
  */
-char *
-geterr(c)
-int c;
+char * geterr(int c)
 {
 	int i;
 

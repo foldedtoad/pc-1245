@@ -200,8 +200,7 @@ ee DDDDDDDDDD ddd ddd ddd ddd [nn]LLLLL *********	DECIMAL(32)
  *
  */
 
-VOID
-list()
+VOID list(void)
 {
 	char *frmt, *wp;
 	int *wpt;
@@ -757,10 +756,7 @@ list()
  *		Data formatted and output to listing.
  */
 
-VOID
-list1(wp, wpt, nb)
-char *wp;
-int *wpt, nb;
+VOID list1(char * wp, int * wpt, int nb)
 {
 	int i;
 	char *frmt;
@@ -809,9 +805,7 @@ int *wpt, nb;
  *		Relocation flag output to listing file.
  */
 
-VOID
-list2(t)
-int t;
+VOID list2(int t)
 {
 	int c;
 
@@ -888,11 +882,7 @@ int t;
  *		is written to the HLR file.
  */
 
-VOID
-listhlr(hlr_lst, hlr_mode, hlr_nb)
-int hlr_lst;
-int hlr_mode;
-int hlr_nb;
+VOID listhlr(int hlr_lst, int hlr_mode, int hlr_nb)
 {
 	char *frmt;
 
@@ -963,10 +953,7 @@ int hlr_nb;
  *		a new page header is output to the listing file.
  */
 
-VOID
-slew(fp,flag)
-FILE *fp;
-int flag;
+VOID slew(FILE * fp, int flag)
 {
 	char *frmt;
 	char np[80];
@@ -985,12 +972,9 @@ int flag;
 			sprintf(np, "%-78s", tp);
 			/*
 			 * Right justify page number in string.
-			 */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wstringop-truncation"			 
+			 */			 
 			sprintf(tp, "Page %u", ++page);
-			strncpy(&np[strlen(np) - strlen(tp)], tp, strlen(tp));
-#pragma GCC diagnostic pop			
+			strncpy(&np[strlen(np) - strlen(tp)], tp, strlen(tp));			
 			/*
 			 * Output string.
 			 */
@@ -1079,9 +1063,7 @@ int flag;
  *		Symbol and area tables output.
  */
 
-VOID
-lstsym(fp)
-FILE *fp;
+VOID lstsym(FILE * fp)
 {
 	int c, i, j, k, n, paging;
 	int nmsym, narea, nbank;

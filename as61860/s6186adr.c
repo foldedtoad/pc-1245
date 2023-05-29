@@ -29,9 +29,7 @@
 
 
 /*  Classify argument as to address mode */
-int
-addr(esp)
-struct expr *esp;
+int addr(struct expr * esp)
 {
 	int c;
 
