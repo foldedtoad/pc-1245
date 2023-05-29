@@ -17,7 +17,7 @@ IHEXCONV = ihex2wav
 
 .PHONY:	all clean
 
-all:	$(BLDDIR) $(IHEXCONV)
+all:	blddir $(IHEXCONV)
 
 clean:
 	rm -f *.o

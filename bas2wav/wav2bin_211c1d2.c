@@ -2820,9 +2820,7 @@ int AmplitudesDistanceStatData (int ampd, int* acnt, int* dpos, int* dpos_max, i
    These errors were found in wav files. The causes are close to the hardware
    or are the software for recording and processing the files. */
 
-int ReadBitFromWav (ulong*  ptrTrans,
-                    ulong*  ptrAmps,
-                    FileInfo*  ptrFile)
+int ReadBitFromWav (ulong*  ptrTrans, ulong*  ptrAmps, FileInfo*  ptrFile)
 {
     int  sign = 1 ;
     int  inVal ;
@@ -2837,8 +2835,10 @@ int ReadBitFromWav (ulong*  ptrTrans,
          dpos_sum = 0, // dpos_sum2 = 0, vrcdpos ;
          acnt_scal = 0;
 
+         (void) acnt_scal;
+
     int  ii, imax = ptrFile->bitLen ;
-   long  position ;
+    long position ;
     int  error ;
     //DEBUG code double Debug_wavtime = WavTime(ptrFile) ;
 
@@ -7365,22 +7365,24 @@ int ReadLineFromBasWav (ulong  order,
  static bool  LastLineEot = false ;
  static bool  WarnPC156M1 = true, ErrAddInfo = true ;
 
-     uint  ii, lineNbPos = 0 ;
+    uint   ii, lineNbPos = 0 ;
     ulong  byte ;
     ulong  byte2, byte3 ;
     ulong  sum, sumH ;
     ulong  length ;
     ulong  tmpL ;
     ulong  lineNb ;
-     char  tmpC[cLNB] = "" ;     /* Buffer for line nb or full e500 number */
-      int  maxlen;
-     uint  REM_line_cnt = 0;
-     bool  REM_line = false, REM_E_jmp = false, BeforeCR = false, BeforeCR2 = false ;
-     bool  string_open = false ; /* bas2img: string_auf */
-     bool  FN_old = false ;      /* for old basic expression conversion warning */
-      int  keyword_pos ;
-     long  position, lineNb_pos; /* temporary image file (for input) position */
-      int  error = ERR_OK;
+    char   tmpC[cLNB] = "" ;     /* Buffer for line nb or full e500 number */
+    int    maxlen;
+    uint   REM_line_cnt = 0;
+    bool   REM_line = false, REM_E_jmp = false, BeforeCR = false, BeforeCR2 = false ;
+    bool   string_open = false ; /* bas2img: string_auf */
+    bool   FN_old = false ;      /* for old basic expression conversion warning */
+    int    keyword_pos ;
+    long   position, lineNb_pos; /* temporary image file (for input) position */
+    int    error = ERR_OK;
+
+    (void) REM_line_cnt;
 
     ulong  ident = ptrFile->ident ; /* local, handle PC-1600 image inside PC-1500 device */
 
