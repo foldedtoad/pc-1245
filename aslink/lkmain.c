@@ -394,9 +394,7 @@ intsiz()
  *		All files closed. Program terminates.
  */
 
-VOID
-lkexit(i)
-int i;
+VOID lkexit(int i)
 {
 	lkfclose();
 #if NOICE
@@ -1295,11 +1293,7 @@ setgbl()
  *		File is opened for read or write.
  */
 
-FILE *
-afile(fn, ft, wf)
-char *fn;
-char *ft;
-int wf;
+FILE * afile(char * fn, char * ft, int wf)
 {
 	char *p1, *p2;
 	int c;
@@ -1395,9 +1389,7 @@ int wf;
  *		none
  */
 
-int
-fndidx(str)
-char *str;
+int fndidx(char * str)
 {
 	char *p1, *p2;
 
@@ -1435,9 +1427,7 @@ char *str;
  *		none
  */
 
-int
-fndext(str)
-char * str;
+int fndext(char * str)
 {
 	char *p1, *p2;
 

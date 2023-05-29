@@ -79,9 +79,7 @@
  *
  */
 
-VOID
-reloc3(c)
-int c;
+VOID reloc3(int c)
 {
 	switch(c) {
 
@@ -153,8 +151,7 @@ int c;
  *
  */
 
-VOID
-relt3()
+VOID relt3(void)
 {
 	rtcnt = 0;
 	while (more()) {
@@ -264,8 +261,7 @@ relt3()
  *
  */
 
-VOID
-relr3()
+VOID relr3(void)
 {
 	int mode;
 	a_uint reli, relv;
@@ -644,8 +640,7 @@ char *errmsg3[] = {
  *
  */
 
-VOID
-relp3()
+VOID relp3(void)
 {
 	int aindex, rindex;
 	int mode, rtp;
@@ -744,8 +739,7 @@ relp3()
  *
  */
 
-VOID
-rele3()
+VOID rele3(void)
 {
 	if (uflag != 0) {
 		lkulist(0);
@@ -777,9 +771,7 @@ rele3()
  *
  */
 
-VOID
-relerr3(str)
-char *str;
+VOID relerr3(char * str)
 {
 	errdmp3(stderr, str);
 	if (mfp)
@@ -817,10 +809,7 @@ char *str;
  *
  */
 
-VOID
-errdmp3(fptr, str)
-FILE *fptr;
-char *str;
+VOID errdmp3(FILE * fptr, char * str)
 {
 	int mode, aindex, rindex;
 	struct sym **s;
@@ -909,9 +898,7 @@ char *str;
  *
  */
 
-VOID
-relerp3(str)
-char *str;
+VOID relerp3(char * str)
 {
 	erpdmp3(stderr, str);
 	if (mfp)
@@ -942,10 +929,7 @@ char *str;
  *
  */
 
-VOID
-erpdmp3(fptr, str)
-FILE *fptr;
-char *str;
+VOID erpdmp3(FILE * fptr, char * str)
 {
 	struct head *thp;
 
@@ -1000,10 +984,7 @@ char *str;
  *
  */
 
-a_uint
-adb_lo(v, i)
-a_uint	v;
-int	i;
+a_uint adb_lo(a_uint v, int i)
 {
 	a_uint j;
 	int m, n;
@@ -1046,10 +1027,7 @@ int	i;
  *
  */
 
-a_uint
-adb_hi(v, i)
-a_uint	v;
-int	i;
+a_uint adb_hi(a_uint v, int i)
 {
 	a_uint j;
 	int m, n;
@@ -1064,5 +1042,3 @@ int	i;
 	}
 	return (j);
 }
-
-

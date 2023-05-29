@@ -93,9 +93,7 @@
  *
  */
 
-VOID
-reloc4(c)
-int c;
+VOID reloc4(int c)
 {
 	switch(c) {
 
@@ -167,8 +165,7 @@ int c;
  *
  */
 
-VOID
-relt4()
+VOID relt4(void)
 {
 	rtcnt = 0;
 	while (more()) {
@@ -289,8 +286,7 @@ relt4()
  *
  */
 
-VOID
-relr4()
+VOID relr4(void)
 {
 	a_uint reli, relv;
 	int mode;
@@ -850,8 +846,7 @@ char *errmsg4[] = {
  *
  */
 
-VOID
-relp4()
+VOID relp4(void)
 {
 	int aindex, rindex;
 	int mode, rtp;
@@ -953,8 +948,7 @@ relp4()
  *
  */
 
-VOID
-rele4()
+VOID rele4(void)
 {
 	if (uflag != 0) {
 		lkulist(0);
@@ -986,9 +980,7 @@ rele4()
  *
  */
 
-VOID
-relerr4(str)
-char *str;
+VOID relerr4(char * str)
 {
 	errdmp4(stderr, str);
 	if (mfp)
@@ -1026,10 +1018,7 @@ char *str;
  *
  */
 
-VOID
-errdmp4(fptr, str)
-FILE *fptr;
-char *str;
+VOID errdmp4(FILE * fptr, char * str)
 {
 	int mode, aindex, rindex;
 	struct sym **s;
@@ -1118,9 +1107,7 @@ char *str;
  *
  */
 
-VOID
-relerp4(str)
-char *str;
+VOID relerp4(char * str)
 {
 	erpdmp4(stderr, str);
 	if (mfp)
@@ -1151,10 +1138,7 @@ char *str;
  *
  */
 
-VOID
-erpdmp4(fptr, str)
-FILE *fptr;
-char *str;
+VOID erpdmp4(FILE * fptr, char * str)
 {
 	struct head *thp;
 
@@ -1208,10 +1192,8 @@ char *str;
  *	side effects:
  *		none
  */
-a_uint lkmerge(val, r, base)
-a_uint val;
-int r;
-a_uint base;
+
+a_uint lkmerge(a_uint val, int r, a_uint base)
 {
 	struct mode *mp;
 	char *vp;
@@ -1270,11 +1252,7 @@ a_uint base;
  *
  */
 
-a_uint
-adb_byte(p, v, i)
-int 	p;
-a_uint	v;
-int	i;
+a_uint adb_byte(int p, a_uint v, int i)
 {
 	a_uint j;
 	int m, n;
@@ -1311,9 +1289,7 @@ int	i;
  *
  */
 
-a_uint
-gtb_1b(i)
-int i;
+a_uint gtb_1b(int i)
 {
 	return(rtval[i]);
 }
@@ -1341,10 +1317,7 @@ int i;
  *
  */
 
-a_uint
-ptb_1b(v, i)
-a_uint v;
-int i;
+a_uint ptb_1b(a_uint v, int i)
 {
 	return(rtval[i] = v & ((a_uint) 0x000000FF));
 }
@@ -1372,9 +1345,7 @@ int i;
  *
  */
 
-a_uint
-gtb_2b(i)
-int i;
+a_uint gtb_2b(int i)
 {
 	a_uint v;
 
@@ -1412,10 +1383,7 @@ int i;
  *
  */
 
-a_uint
-ptb_2b(v, i)
-a_uint v;
-int i;
+a_uint ptb_2b(a_uint v, int i)
 {
 	if (hilo) {
 		rtval[i+0] = (v >> 8) & ((a_uint) 0x000000FF);
@@ -1450,9 +1418,7 @@ int i;
  *
  */
 
-a_uint
-gtb_3b(i)
-int i;
+a_uint gtb_3b(int i)
 {
 	a_uint v;
 
@@ -1492,10 +1458,7 @@ int i;
  *
  */
 
-a_uint
-ptb_3b(v, i)
-a_uint v;
-int i;
+a_uint ptb_3b(a_uint v, int i)
 {
 	if (hilo) {
 		rtval[i+0] = (v >> 16) & ((a_uint) 0x000000FF);
@@ -1532,9 +1495,7 @@ int i;
  *
  */
 
-a_uint
-gtb_4b(i)
-int i;
+a_uint gtb_4b(int i)
 {
 	a_uint v;
 
@@ -1576,10 +1537,7 @@ int i;
  *
  */
 
-a_uint
-ptb_4b(v, i)
-a_uint v;
-int i;
+a_uint ptb_4b(a_uint v, int i)
 {
 	if (hilo) {
 		rtval[i+0] = (v >> 24) & ((a_uint) 0x000000FF);
@@ -1619,9 +1577,7 @@ int i;
  *
  */
 
-a_uint
-gtb_xb(i)
-int i;
+a_uint gtb_xb(int i)
 {
 	a_uint v;
 
@@ -1699,10 +1655,7 @@ int i;
  *
  */
 
-a_uint
-ptb_xb(v, i)
-a_uint v;
-int i;
+a_uint ptb_xb(a_uint v, int i)
 {
 	a_uint j;
 
@@ -1753,4 +1706,3 @@ int i;
 #endif
 	return(j);
 }
-

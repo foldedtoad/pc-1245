@@ -85,10 +85,7 @@
  *		input text line.
  */
 
-VOID
-getid(id, c)
-int c;
-char *id;
+VOID getid(char *id, int c)
 {
 	char *p;
 
@@ -127,10 +124,13 @@ char *id;
  *		the position in the current input text line.
  */
 
-VOID
-getfid(str, c)
-int c;
-char *str;
+VOID getfid(char * str, int c)
+
+
+
+
+
+
 {
 	char *p;
 
@@ -162,8 +162,7 @@ char *str;
  *		in the current input text line
  */
 
-int
-getnb()
+int getnb(void)
 {
 	int c;
 
@@ -194,9 +193,7 @@ getnb()
  *		Input letters and digits are skipped.
  */
 
-VOID
-skip(c)
-int c;
+VOID skip(int c)
 {
 	if (c < 0)
 		c = getnb();
@@ -227,8 +224,7 @@ int c;
  *		line, ip is not updated.
  */
 
-int
-get()
+int get(void)
 {
 	int c;
 
@@ -265,9 +261,7 @@ get()
  *		ip decremented by 1 character position
  */
 
-VOID
-unget(c)
-int c;
+VOID unget(int c)
 {
 	if (c != 0)
 		--ip;
@@ -304,9 +298,7 @@ int c;
  *		in the current input text line
  */
 
-int
-getmap(d)
-int d;
+int getmap(int d)
 {
 	int c, n, v;
 
@@ -419,8 +411,7 @@ int d;
  *		opened and closed sequentially scanning each in turn.
  */
 
-int
-nxtline()
+int nxtline(void)
 {
 	int ftype;
 	char *fid;
@@ -515,8 +506,7 @@ loop:	if (cfp && cfp->f_type == F_STD)
  *		the position in the current input text line
  */
 
-int
-more()
+int more(void)
 {
 	int c;
 
@@ -547,8 +537,7 @@ more()
  *		position in the current input text line.
  */
 
-char
-endline()
+char endline(void)
 {
 	int c;
 
@@ -577,9 +566,7 @@ endline()
  *		All CR and LF characters removed.
  */
 
-VOID
-chopcrlf(str)
-char *str;
+VOID chopcrlf(char * str)
 {
 	char *p;
 	char c;

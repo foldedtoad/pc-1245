@@ -74,9 +74,7 @@
  *		The REL data is output in the required format.
  */
 
-VOID
-lkout(i)
-int i;
+VOID lkout(int i)
 {
 	int j;
 
@@ -133,8 +131,7 @@ int i;
  *		to the output file.
  */
 
-VOID
-lkflush()
+VOID lkflush(void)
 {
 	if (ofp == NULL)   { return; }
 
@@ -264,9 +261,7 @@ lkflush()
  *	Plus 32 data bytes (64 characters)
  */
 
-VOID
-ixx(i)
-int i;
+VOID ixx(int i)
 {
 	int k;
 	struct sym *sp;
@@ -394,8 +389,7 @@ int i;
  * to the target system is much improved.
  */
 
-VOID
-iflush()
+VOID iflush(void)
 {
 	int i, max, reclen;
 	a_uint chksum, lo_addr, hi_addr;
@@ -551,9 +545,7 @@ iflush()
  *	Plus 32 data bytes (64 characters)
  */
 
-VOID
-sxx(i)
-int i;
+VOID sxx(int i)
 {
 	struct sym *sp;
 	char *frmt;
@@ -688,8 +680,7 @@ int i;
  * to the target system is much improved.
  */
 
-VOID
-sflush()
+VOID sflush(void)
 {
 	char *frmt;
 	int i, max, reclen;
@@ -805,9 +796,7 @@ sflush()
  *		The data is placed into the output buffer.
  */
 
-VOID
-dbx(i)
-int i;
+VOID dbx(int i)
 {
 	struct sym *sp;
 	int k;
@@ -916,8 +905,7 @@ int i;
  * Written by Boisy G. Pitre, boisy@boisypitre.com, 6-7-04
  */
 
-VOID
-dflush()
+VOID dflush(void)
 {
 	int i, max;
 

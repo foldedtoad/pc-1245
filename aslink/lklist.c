@@ -83,9 +83,7 @@
  *		The page and line counters are updated.
  */
 
-VOID
-newpag(fp)
-FILE *fp;
+VOID newpag(FILE * fp)
 {
 	char *frmt;
 	char np[80];
@@ -158,10 +156,7 @@ FILE *fp;
  *		none
  */
 
-int
-dgt(rdx, str, n)
-int rdx, n;
-char *str;
+int dgt(int rdx, char * str, int n)
 {
 	int i;
 
@@ -208,10 +203,7 @@ char *str;
  *		The page line and the page count may be updated.
  */
 
-VOID
-slew(xp,yp)
-struct area *xp;
-struct bank *yp;
+VOID slew(struct area * xp, struct bank * yp)
 {
 	int i, n;
 	char *frmta, *frmtb, *ptr;
@@ -411,10 +403,7 @@ struct bank *yp;
  *		Map output generated.
  */
 
-VOID
-lstarea(xp, yp)
-struct area *xp;
-struct bank *yp;
+VOID lstarea(struct area * xp, struct bank * yp)
 {
 	struct areax *oxp;
 	int i, j, n;
@@ -641,9 +630,7 @@ struct bank *yp;
 /*) Function	lsterr(err)
 */
 
-VOID
-lsterr(err)
-int err;
+VOID lsterr(int err)
 {
 	/*
 	 * Output an error line if required
@@ -781,9 +768,7 @@ ee DDDDDDDDDD ddd ddd ddd ddd [nn]LLLLL *********	DECIMAL(32)
  *		file associated with a .rel file.
  */
 
-VOID
-lkulist(i)
-int i;
+VOID lkulist(int i)
 {
 	a_uint cpc;
 	int cbytes;
@@ -918,10 +903,7 @@ int i;
  *		updated to reflect the program relocation.
  */
 
-
-VOID
-lkalist(cpc)
-a_uint cpc;
+VOID lkalist(a_uint cpc)
 {
 	char str[16];
 	char *frmt;
@@ -1097,11 +1079,7 @@ loop:	if (getlst(1) == 0) {
  *		with updated data values and code addresses.
  */
 
-VOID
-lklist(cpc,v,err)
-a_uint cpc;
-int v;
-int err;
+VOID lklist(a_uint cpc, int v, int err)
 {
 	char str[16];
 	char *afrmt, *frmt;
@@ -1291,9 +1269,7 @@ loop:	if (gline) {
  *		gline is set, and gcntr is cleared.
  */
 
-int
-getlst(ngline)
-int ngline;
+int getlst(int ngline)
 {
 	int i;
 
@@ -1393,11 +1369,7 @@ int ngline;
  *		with updated data values and code addresses.
  */
 
-VOID
-hlrlist(cpc,v,err)
-a_uint cpc;
-int v;
-int err;
+VOID hlrlist(a_uint cpc, int v, int err)
 {
  	/*
 	 * Exit if listing file is not open
@@ -1583,8 +1555,7 @@ lpLST:	if (gline) {
 /*)Function	VOID	setgh()
 */
 
-VOID
-setgh()
+VOID setgh(void)
 {
 	if (listing && !(listing & HLR_NLST)) {
 		gline = 1;
@@ -1650,9 +1621,7 @@ setgh()
  *		updated to reflect the program relocation.
  */
 
-VOID
-hlralist(cpc)
-a_uint cpc;
+VOID hlralist(a_uint cpc)
 {
 	char str[16];
 	char *frmt;
@@ -1762,10 +1731,7 @@ a_uint cpc;
 /*)Function	int	hlrclist()
 */
 
-VOID
-hlrclist(cpc,v)
-a_uint cpc;
-int v;
+VOID hlrclist(a_uint cpc, int v)
 {
 	char str[16];
 	char *afrmt, *dfrmt;
@@ -1944,8 +1910,7 @@ int v;
  *		updated in the .rst line.
  */
 
-VOID
-hlrelist()
+VOID hlrelist(void)
 {
 	char str[16];
 	char *afrmt;
@@ -2105,9 +2070,7 @@ hlrelist()
  *		bytcnt, listing, lmode, and eqt_id.
  */
 
-int
-gethlr(nhline)
-int nhline;
+int gethlr(int nhline)
 {
 	char hlr[128];
 	char *frmt;
@@ -2152,5 +2115,3 @@ int nhline;
 	hline = nhline;
 	return(hfp ? 1 : 0);
 }
-
-

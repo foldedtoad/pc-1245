@@ -135,9 +135,7 @@ eval()
  *		text string.
  */
 
-a_uint
-expr (n)
-int n;
+a_uint expr(int n)
 {
 	int c, p;
 	a_uint v, ve;
@@ -379,9 +377,7 @@ term()
  *		none
  */
 
-int
-digit(c, r)
-int c, r;
+int digit(int c, int r)
 {
 	if (r == 16) {
 		if (ctype[c] & RAD16) {
@@ -426,10 +422,7 @@ int c, r;
  *	side effects:
  *		none
  */
- 
-int
-oprio(c)
-int c;
+int oprio(int c)
 {
 	if (c == '*' || c == '/' || c == '%')
 		return (10);

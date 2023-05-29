@@ -71,8 +71,7 @@
  *		(1)	The symbol hash tables are cleared
  */
 
-VOID
-syminit()
+VOID syminit(void)
 {
 	struct sym **spp;
 
@@ -138,8 +137,7 @@ syminit()
  *   `------------ sp->s_id
  *
  */
-struct sym *
-newsym()
+struct sym * newsym(void)
 {
 	a_uint ev;
 	int c, i, nsym;
@@ -231,10 +229,7 @@ newsym()
  *		for the new sym structure the linker terminates.
  */
 
-struct sym *
-lkpsym(id, f)
-char *id;
-int f;
+struct sym * lkpsym(char * id, int f)
 {
 	struct sym *sp;
 	int h;
@@ -276,9 +271,7 @@ int f;
  *		none
  */
 
-a_uint
-symval(tsp)
-struct sym *tsp;
+a_uint symval(struct sym *tsp)
 {
 	a_uint val;
 
@@ -316,9 +309,7 @@ struct sym *tsp;
  *		Undefined variables have their areas set to "_CODE".
  */
 
-VOID
-symdef(fp)
-FILE *fp;
+VOID symdef(FILE * fp)
 {
 	struct sym *sp;
 	int i;
@@ -365,10 +356,7 @@ FILE *fp;
  *		Error output generated.
  */
 
-VOID
-symmod(fp, tsp)
-FILE *fp;
-struct sym *tsp;
+VOID symmod(FILE * fp, struct sym * tsp)
 {
 	int i;
 	struct sym **p;
@@ -419,10 +407,7 @@ struct sym *tsp;
  *
  */
 
-int
-symeq(p1, p2, cflag)
-char *p1, *p2;
-int cflag;
+int symeq(char * p1, char * p2, int cflag)
 {
 	int n;
 
@@ -472,10 +457,7 @@ int cflag;
  *		none
  */
 
-int
-hash(p, cflag)
-char *p;
-int cflag;
+int hash(char * p, int cflag)
 {
 	int h;
 
@@ -525,9 +507,7 @@ int cflag;
  *		to space.  Out of Space terminates linker.
  */
 
-char *
-strsto(str)
-char *str;
+char * strsto(char * str)
 {
 	int  l;
 	char *p;
@@ -604,9 +584,7 @@ char *str;
 static	char *	pnext = NULL;
 static	int	bytes = 0;
 
-char *
-new(n)
-unsigned int n;
+char * new(unsigned int n)
 {
 	char *p,*q;
 	unsigned int i;
@@ -692,9 +670,7 @@ unsigned int n;
 static	char *	pnext = NULL;
 static	int	bytes = 0;
 
-char *
-strsto(str)
-char *str;
+char * strsto(char * str)
 {
 	int  l;
 	char *p;
@@ -750,9 +726,7 @@ char *str;
  *		the linker is terminated.
  */
 
-char *
-new(n)
-unsigned int n;
+char * new(unsigned int n)
 {
 	char *p,*q;
 	unsigned int i;

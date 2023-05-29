@@ -298,9 +298,7 @@ newarea()
  *		will terminate the linker.
  */
 
-VOID
-lkparea(id)
-char *id;
+VOID lkparea(char * id)
 {
 	struct area *tap;
 	struct areax *taxp;
@@ -511,9 +509,7 @@ lnkarea()
  *		A symbol is created fro each areax entry.
  */
 
-VOID
-lnksect(tap)
-struct area *tap;
+VOID lnksect(struct area * tap)
 {
 	a_uint size, addr;
 	struct areax *taxp;

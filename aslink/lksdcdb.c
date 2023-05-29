@@ -102,8 +102,7 @@ VOID SDCDBfopen(void)
  *		the linker cdb output file.
  */
 
-VOID SDCDBcopy(str)
-char * str;
+VOID SDCDBcopy(char * str)
 {
 	FILE * xfp;
 	char line[NINPUT];
@@ -150,9 +149,7 @@ char * str;
  *		into the output file.
  */
 
-VOID DefineSDCDB(name, value)
-char *name;
-a_uint value;
+VOID DefineSDCDB(char * name, a_uint value)
 {
 	int  j;
 	char *p1;
@@ -180,4 +177,3 @@ a_uint value;
 }
 
 #endif
-

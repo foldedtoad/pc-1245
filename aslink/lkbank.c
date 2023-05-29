@@ -97,8 +97,7 @@
  *   `-------------------------------------------------- bp->b_id
  *
  */
-VOID
-newbank()
+VOID newbank(void)
 {
 	int i;
 	a_uint v;
@@ -237,9 +236,7 @@ newbank()
  *		will terminate the linker.
  */
 
-VOID
-lkpbank(id)
-char *id;
+VOID lkpbank(char * id)
 {
 	struct bank *tbp;
 
@@ -298,8 +295,7 @@ char *id;
  *		areas linked to bank[0].
  */
 
-VOID
-setbank()
+VOID setbank(void)
 {
 	a_uint base;
 	int bytes;
@@ -378,9 +374,7 @@ setbank()
  *		Bank size may be flagged.
  */
 
-VOID
-chkbank(fp)
-FILE *fp;
+VOID chkbank(FILE *fp)
 {
 	a_uint alow, ahigh, blimit, bytes;
 

@@ -172,10 +172,7 @@ addlib()
  *		An lbname structure may be created.
  */
 
-VOID
-addfile(path,libfil)
-char *path;
-char *libfil;
+VOID addfile(char * path, char * libfil)
 {
 	FILE *fp;
 	char *str, *strend;
@@ -256,8 +253,7 @@ char *libfil;
  *		containing the symbol will be imported and linked.
  */
 
-VOID
-search()
+VOID search(void)
 {
 	struct sym *sp;
 	int i,symfnd;
@@ -370,9 +366,7 @@ search()
  *		is linked.
  */
 
-int
-fndsym(name)
-char *name;
+int fndsym(char * name)
 {
 	FILE *libfp, *fp;
 	struct lbname *lbnh;
@@ -528,8 +522,7 @@ char *name;
  *		Links all files contained in the lbfile structures.
  */
 
-VOID
-library()
+VOID library(void)
 {
 	struct lbfile *lbfh;
 
@@ -564,9 +557,7 @@ library()
  *		If file exists it is linked.
  */
 
-VOID
-loadfile(filspc)
-char *filspc;
+VOID loadfile(char * filspc)
 {
 	FILE *fp;
 	char str[NINPUT];

@@ -74,9 +74,7 @@
  *
  */
 
-VOID
-reloc(c)
-int c;
+VOID reloc(int c)
 {
 	switch(ASxxxx_VERSION) {
 	case 3:
@@ -115,8 +113,7 @@ int c;
  *
  */
 
-a_uint
-evword()
+a_uint evword(void)
 {
 	a_uint v;
 
@@ -153,10 +150,7 @@ evword()
  *
  */
 
-a_uint
-adb_1b(v, i)
-a_uint v;
-int i;
+a_uint adb_1b(a_uint v, int i)
 {
 	a_uint j;
 
@@ -189,10 +183,7 @@ int i;
  *
  */
 
-a_uint
-adb_2b(v, i)
-a_uint v;
-int i;
+a_uint adb_2b(a_uint v, int i)
 {
 	a_uint j;
 
@@ -233,10 +224,7 @@ int i;
  *
  */
 
-a_uint
-adb_3b(v, i)
-a_uint v;
-int i;
+a_uint adb_3b(a_uint v, int i)
 {
 	a_uint j;
 
@@ -281,10 +269,7 @@ int i;
  *
  */
 
-a_uint
-adb_4b(v, i)
-a_uint v;
-int i;
+a_uint adb_4b(a_uint v, int i)
 {
 	a_uint j;
 
@@ -336,10 +321,7 @@ int i;
  *
  */
 
-a_uint
-adb_xb(v, i)
-a_uint v;
-int i;
+a_uint adb_xb(a_uint v, int i)
 {
 	a_uint j;
 
@@ -421,11 +403,7 @@ int i;
  *
  */
 
-a_uint
-adw_xb(x, v, i)
-int x;
-a_uint v;
-int i;
+a_uint adw_xb(int x, a_uint v, int i)
 {
 	a_uint j;
 	int n;
@@ -464,10 +442,7 @@ int i;
  *
  */
 
-VOID
-prntval(fptr, v)
-FILE *fptr;
-a_uint v;
+VOID prntval(FILE * fptr, a_uint v)
 {
 	char *frmt;
 
