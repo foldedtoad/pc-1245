@@ -98,10 +98,7 @@ extern	int	blank();
  *		char *	argv		array of pointers to argument strings
  */
 
-int
-main(argc, argv)
-int argc;
-char *argv[];
+int main(int argc, char * argv[])
 {
 	char *p, *q;
 	int c, i, j, n, m, k, r, x, y;
@@ -441,10 +438,7 @@ loop:
  *		none
  */
 
-int
-blank(p, q, n)
-char *p, *q;
-int n;
+int blank(char * p, char * q, int n)
 {
 	int i, j;
 
@@ -490,10 +484,7 @@ int n;
  *		none
  */
 
-int
-dgt(rdx, str, n)
-int rdx, n;
-char *str;
+int dgt(int rdx, char * str, int n)
 {
 	int i;
 
@@ -531,9 +522,7 @@ char *str;
  *		Trailing white space removed.
  */
 
-VOID
-chopcrlf(str)
-char *str;
+VOID chopcrlf(char * str)
 {
 	char *p, *q;
 	char c;
@@ -579,9 +568,7 @@ char *str;
  *		All files closed. Program terminates.
  */
 
-VOID
-asexit(i)
-int i;
+VOID asexit(int i)
 {
 	if (sfp[0] != NULL) fclose(sfp[0]);
 
@@ -620,8 +607,7 @@ char *usetxt[] = {
  *		program is terminated
  */
 
-VOID
-usage()
+VOID usage(void)
 {
 	char **dp;
 
