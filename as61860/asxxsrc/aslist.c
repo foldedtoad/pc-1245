@@ -973,8 +973,11 @@ VOID slew(FILE * fp, int flag)
 			/*
 			 * Right justify page number in string.
 			 */			 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstringop-truncation"			
 			sprintf(tp, "Page %u", ++page);
-			strncpy(&np[strlen(np) - strlen(tp)], tp, strlen(tp));			
+			strncpy(&np[strlen(np) - strlen(tp)], tp, strlen(tp));
+#pragma GCC diagnostic pop
 			/*
 			 * Output string.
 			 */
