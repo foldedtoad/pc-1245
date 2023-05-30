@@ -13,6 +13,7 @@ BLDDIR:=    ./build
 CC=			gcc
 CCOPT=		-O3
 CCFLAGS=	-Wall -funsigned-char $(CCOPT)
+#CCFLAGS+=	-save-temps
 
 LD=			gcc
 LDFLAGS=	-Wall
