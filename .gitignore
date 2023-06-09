@@ -54,3 +54,4 @@ dkms.conf
 build/
 # as61860
 ihex2wav
+*.wav
