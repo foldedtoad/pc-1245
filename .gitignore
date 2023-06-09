@@ -52,5 +52,5 @@ Mkfile.old
 dkms.conf
 
 build/
-as61860
+# as61860
 ihex2wav
