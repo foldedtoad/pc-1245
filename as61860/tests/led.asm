@@ -1,3 +1,4 @@
+;-----------------------------------------------
 ;led.asm = LED Light Effect for PC-1245
 ; AS61860 assembler
 ; Assemble: as61860 -glaxff led.asm

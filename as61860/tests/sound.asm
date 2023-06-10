@@ -1,8 +1,11 @@
-;
-;  Assemble:
-;  as61860  -glaxff sound
-;
+; -----------------------------------------------
+; sound.asm = Sound for SHARP PC-1245
+; AS61860 assembler
+; Assemble: as61860 -glaxff sound.asm
+; -----------------------------------------------
+
       .AREA sound (ABS)
+
       .ORG  0xC000
       LIA   0x00        ; <== Length
       PUSH              ; A --> (R)
